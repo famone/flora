@@ -4,6 +4,9 @@
         <TitleSkeleton v-else />
         <SortSelect @select-filter="selectFilter" :selected-filter="selectedFilter" />
     </div>
+    <div v-if="items && items.length">
+        <div v-if="!filterProducts(items).length">Ничего не найдено, согласно параметрам фильтра</div>
+    </div>
     <div class="grid grid-cols-4 gap-6" v-if="items && items.length">
         <div v-for="(item, index) in filterProducts(items)" :key="index" class="col-span-1">
             <ProductCard :item="item" />

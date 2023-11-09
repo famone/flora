@@ -11,11 +11,10 @@
                         {{ item.price[store.catalogSelected] }} ₽
                     </p>
                     <p class="text-xl font-bold items-center" v-else>****</p>
-                    <button class=" bg-primary rounded text-sm font-semibold p-1 group/btn flex items-center"
-                        @click.prevent="addToCart">
-                        <PlusIcon class="h-4 group-hover/btn:rotate-90 transition-all mr-1" />
-                        В корзину
-                    </button>
+                    <div :class="outStockClass" v-if="outOfStock">
+                        Товар закончился
+                    </div>
+                    <AddToCartButton v-else @click.prevent="addToCart" />
                 </div>
                 <h4 class="title font-semibold group-hover/item:text-primary_2">{{ item.name }}</h4>
             </div>
@@ -25,7 +24,7 @@
   
 <script setup lang="ts">
 import { Product } from '@/types/shop'
-import { PlusIcon } from '@heroicons/vue/24/outline'
+import AddToCartButton from '@/shared/AddToCartButton.vue'
 import LikeButton from '@/shared/LikeButton.vue'
 import { useShopStore } from '@/stores/shop'
 
@@ -35,6 +34,9 @@ interface Props {
 }
 const { item } = defineProps<Props>()
 
+const outOfStock = item.inStock === 'instock' ? false : true
+
+const outStockClass = 'bg-red-200 text-red-800 px-2 py-1 rounded flex items-center text-xs font-semibold'
 const addToCart = (): void => {
     alert('добавить в корзину')
 }

@@ -1,13 +1,13 @@
 <template>
-    <div class="py-8">
+    <div class="py-8 pt-16">
         <ProductView :product="product" />
-        <Popular />
+        <!-- <Popular /> -->
     </div>
 </template>
 
 <script setup lang="ts">
 import { watch, ref, onMounted } from 'vue'
-import Popular from '@/widgets/home/Popular.vue'
+// import Popular from '@/widgets/home/Popular.vue'
 import ProductView from '@/widgets/shop/ProductView.vue'
 import { useShopStore } from '@/stores/shop'
 import { Product } from '@/types/shop'

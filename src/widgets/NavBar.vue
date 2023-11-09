@@ -49,8 +49,6 @@ import TopBar from '@/widgets/TopBar.vue'
 import MainLogo from '@/shared/MainLogo.vue'
 import MainCatalog from '@/features/nav/MainCatalog.vue'
 import { useNavBar } from './model/useNavBar'
-// import { useShopStore } from '@/stores/shop'
-// const store = useShopStore()
 
 const overlay = ref(false)
 const isCatalogVisible = ref(false)
