@@ -5,6 +5,7 @@ import perenial from '@/shared/icons/perenial.vue'
 import springflox from '@/shared/icons/springflox.vue'
 import summerflox from '@/shared/icons/summerflox.vue'
 import shrubs from '@/shared/icons/shrubs.vue'
+import leaves from '@/shared/icons/leaves.vue'
 
 export default function useIcons() {
     const icons = [
@@ -36,7 +37,11 @@ export default function useIcons() {
 
     const getIcon = (name: string) => {
         let res = icons.find((i) => i.name === name)
-        return res?.icon
+        if (res) {
+            return res?.icon
+        } else {
+            return leaves
+        }
     }
 
     return {

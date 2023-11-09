@@ -1,6 +1,8 @@
 <template>
-    <CategoryView v-if="currentCat && currentCat.child?.length" :items="currentCat.child" :title="title" />
-    <SubcategoryView v-else :title="title" :items="store.subcat" />
+    <div>
+        <CategoryView v-if="currentCat && currentCat.child?.length" :items="currentCat.child" :title="title" />
+        <SubcategoryView v-else :title="title" :items="store.subcat" />
+    </div>
 </template>
 
 <script setup lang="ts">

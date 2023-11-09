@@ -39,6 +39,7 @@
                         <li class="text-gray-500 font-normal">Ленинградская область,
                             Гатчинский район, д. Парицы,
                             ул.Большая, д.69а</li>
+                        <li class="text-gray-500 font-normal text-sm mt-4">Версия: {{ printVersion }}</li>
                     </ul>
                 </div>
             </div>
@@ -62,11 +63,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useNavBar } from './model/useNavBar'
 import { useShopStore } from '@/stores/shop'
+import { version } from '../../package.json';
 
 const { nav } = useNavBar()
 const store = useShopStore()
+
+const printVersion = ref('')
+printVersion.value = version
 </script>
 
 <style scoped></style>

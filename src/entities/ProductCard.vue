@@ -3,7 +3,7 @@
         <div class="group/item cursor-pointer">
             <div class="rounded overflow-hidden relative">
                 <LikeButton />
-                <img :src="item.picture" class="h-[20rem] object-cover w-full group-hover/item:scale-105 transition-all">
+                <img v-lazy="item.picture" class="h-[20rem] object-cover w-full group-hover/item:scale-105 transition-all">
             </div>
             <div class="py-2 h-full">
                 <div class="flex justify-between items-center mb-2">
