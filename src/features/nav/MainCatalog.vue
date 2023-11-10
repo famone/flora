@@ -22,15 +22,23 @@
                         {{ store.cats[selectedCat].name }}
                         <span class="text-xs text-gray-400">{{ store.cats[selectedCat].child?.length }} категорий</span>
                     </div>
-                    <div class="sub-cols">
-                        <ul class="grid grid-cols-5">
-                            <li v-for="(sub, idx) in  store.cats[selectedCat].child" :key="idx" @click="closeCatalog">
-                                <router-link :to="sub.url"
-                                    class="text-sm font-semibold py-2 text-gray-600 col-span-1 block hover:text-primary_2">
-                                    {{ sub.name }}
-                                </router-link>
-                            </li>
-                        </ul>
+                    <div class="sub">
+                        <div class="sub-gradient"></div>
+                        <div class="sub-cols pb-16">
+                            <ul class="columns-5">
+                                <li v-for="group in  filteredCats()" class="flex mb-2" style="page-break-inside: avoid;">
+                                    <span class="mr-4 font-semibold text-primary_2 leading-5">{{ group.letter }}</span>
+                                    <ul>
+                                        <li v-for="(sub, idx) in  group.subs" :key="idx" @click="closeCatalog">
+                                            <router-link :to="sub.url"
+                                                class="text-sm font-semibold pb-2 text-gray-600 col-span-1 block hover:text-primary_2">
+                                                {{ sub.name }}
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,6 +50,7 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router'
 import useIcons from './model/useIcons'
+import { Subcategory } from '@/types/shop'
 import { ChevronRightIcon } from '@heroicons/vue/24/outline'
 
 import { useShopStore } from '@/stores/shop'
@@ -70,6 +79,19 @@ function setActiveCat() {
         selectedCat.value = store.cats.indexOf(activeCat)
     }
 }
+const filteredCats = () => {
+    if (store.cats[selectedCat.value].child?.length) {
+        const subs = store.cats[selectedCat.value].child
+        const letters = Array.from(new Set(subs?.map((i: Subcategory) => i.name[0])))
+        const res = letters.map((i) => {
+            return {
+                letter: i,
+                subs: subs?.filter((j) => j.name.startsWith(i))
+            }
+        })
+        return res
+    }
+}
 </script>
 
 <style scoped>
@@ -77,9 +99,25 @@ function setActiveCat() {
     box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
+.sub {
+    position: relative;
+}
+
 .sub-cols {
+    position: relative;
     overflow: hidden;
     overflow-y: auto;
     height: 360px;
+}
+
+.sub-gradient {
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    z-index: 1;
+    height: 60px;
+    transition: opacity 0.25s ease-in-out 0s, transform 0.25s ease-in-out 0s;
+    background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
 }
 </style>
