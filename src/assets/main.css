@@ -16,6 +16,7 @@ body {
     font-family: 'Manrope', sans-serif;
 }
 
+/*  */
 .fade-slide-enter-from,
 .fade-slide-leave-to {
     opacity: 0;
@@ -33,11 +34,12 @@ body {
     transform: translateY(0);
 }
 
+/*  */
 .animate-pulse {
     animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-
+/*  */
 .fade-move-enter-from {
     transform: translateY(10px);
     opacity: 0;
@@ -68,4 +70,16 @@ body {
     transform: translateY(10px);
     opacity: 0;
     visibility: hidden;
+}
+
+/*  */
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.3s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
 }

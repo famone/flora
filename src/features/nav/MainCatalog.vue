@@ -119,5 +119,6 @@ const filteredCats = () => {
     height: 60px;
     transition: opacity 0.25s ease-in-out 0s, transform 0.25s ease-in-out 0s;
     background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+    pointer-events: none;
 }
 </style>

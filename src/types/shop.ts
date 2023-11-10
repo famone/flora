@@ -19,16 +19,6 @@ export interface Subcategory {
     count: number
 }
 
-// export interface Gooditem {
-//     id: number | null
-//     name: string
-//     slug: string
-//     picture: string
-//     url: string
-//     price: { sl: number, rg: number }
-//     quantity: { sl: number, rg: number }
-// }
-
 export interface Product {
     id: number | null
     name: string
@@ -47,6 +37,10 @@ export interface Product {
     description?: string
     inStock?: string
     spec?: object
+}
+
+export interface CartItem extends Product {
+    amount: any
 }
 
 export interface CatalogType {
