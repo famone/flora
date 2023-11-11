@@ -1,29 +1,17 @@
 <template>
   <header class="header shadow-md mx-auto sticky top-0 z-20">
-    <div
-      v-if="overlay"
-      class="h-screen w-screen fixed top-0 left-0 bg-black opacity-50 -z-10"
-      @click="changeCatalogVisibility"
-    />
+    <div v-if="overlay" class="h-screen w-screen fixed top-0 left-0 bg-black opacity-60 -z-10"
+      @click="changeCatalogVisibility" />
     <TopBar @closeCatalogIfVisible="closeCatalogIfVisible" />
     <transition name="fade-slide">
-      <MainCatalog
-        v-if="isCatalogVisible"
-        @closeCatalog="changeCatalogVisibility"
-      />
+      <MainCatalog v-if="isCatalogVisible" @closeCatalog="changeCatalogVisibility" />
     </transition>
     <div class="bg-white py-2">
       <div class="container mx-auto">
         <div class="flex gap-6 justify-between items-center">
           <MainLogo />
-          <CatalogMenuButton
-            @click="changeCatalogVisibility"
-            :is-catalog-visible="isCatalogVisible"
-          />
-          <MainSearch
-            @on-focus="(overlay = true), (isCatalogVisible = false)"
-            @on-focusout="overlay = false"
-          />
+          <CatalogMenuButton @click="changeCatalogVisibility" :is-catalog-visible="isCatalogVisible" />
+          <MainSearch @on-focus="(overlay = true), (isCatalogVisible = false)" @on-focusout="overlay = false" />
           <HeaderActions />
         </div>
       </div>
@@ -31,11 +19,7 @@
     <div class="bg-white pb-5">
       <div class="container mx-auto flex justify-between items-center">
         <ul class="flex justify-end items-center gap-6 text-sm font-semibold">
-          <li
-            v-for="(item, i) in main_nav"
-            :key="i"
-            class="hover:opacity-70 transition-all"
-          >
+          <li v-for="(item, i) in main_nav" :key="i" class="hover:opacity-70 transition-all">
             <router-link :to="item.link" class="flex items-center gap-2">
               <component :is="item.icon" class="h-6 text-primary_2" />
               {{ item.txt }}

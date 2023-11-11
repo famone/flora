@@ -83,3 +83,33 @@ body {
     opacity: 0;
     transform: translateY(10px);
 }
+
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f6f6f6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    transition: all .3s ease;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar:hover {
+    background: #d1d5db;
+}
+
+/* search highlight */
+.searchwp-highlight {
+    background-color: transparent !important;
+    color: var(--primary_2);
+}

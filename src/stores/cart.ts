@@ -22,7 +22,7 @@ export const useCartStore = defineStore('cart', {
             this.cart[index].amount += amount
         },
         DELETE_CART_ITEM(index: number) {
-            this.cart.splice(index, 2)
+            this.cart.splice(index, 1)
         }
     },
     // persist: {

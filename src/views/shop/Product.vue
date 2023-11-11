@@ -30,6 +30,7 @@ onMounted(() => {
 })
 
 async function setProduct() {
+    // product.value = null // при вызове надо привести к налл, чтобы отобразить skeleton
     product.value = await store.LOAD_PRODUCT(props.id)
 }
 
