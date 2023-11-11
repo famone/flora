@@ -52,38 +52,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue'
 import { Square2StackIcon, HeartIcon, CheckIcon, StarIcon, ExclamationTriangleIcon, PlusIcon, MinusIcon } from '@heroicons/vue/24/outline'
 import { useShopStore } from '@/stores/shop'
-import { useCartStore } from '@/stores/cart'
-import { Product, CartItem } from '@/types/shop'
+import { Product } from '@/types/shop'
+import { useCart } from '@/helpers/useCart'
 
 const store = useShopStore()
-const cartStore = useCartStore()
 interface Props {
-    product?: Product
+    product: Product
 }
 const { product } = defineProps<Props>()
 
-const inProgress = ref<boolean>(false)
+const { inProgress, productInCart, addCart } = useCart(product)
 
-const productInCart = (): CartItem | null => {
-    const inCart = cartStore.cart.find((i) => i.id === product?.id)
-    return inCart ? inCart : null
-}
-
-async function addCart(val: number) {
-    // переписать на промисах, но это не точно
-    inProgress.value = true
-    await nextTick() // prevent doubleclick
-    const payload = { amount: val, ...product } as CartItem
-    inProgress.value = false
-    if (!productInCart()) {
-        cartStore.ADD_CART_ITEM(payload)
-    } else {
-        let index = cartStore.cart.indexOf(productInCart() as CartItem)
-        if (val < 0 && productInCart()?.amount === 1) return cartStore.DELETE_CART_ITEM(index)
-        cartStore.CHANGE_AMOUNT(index, val)
-    }
-}
 </script>

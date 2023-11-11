@@ -2,7 +2,7 @@
     <router-link :to="cat.url" class="grid grid-cols-4 gap-6 py-4 first:pt-0">
         <div class="col-span-1">
             <div class="rounded overflow-hidden relative">
-                <img :src="cat.img" class="h-[16rem] object-cover w-full">
+                <img v-lazy="cat.img" class="h-[16rem] object-cover w-full">
             </div>
         </div>
         <div class="col-span-3 py-2 h-full">

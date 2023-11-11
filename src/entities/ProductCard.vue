@@ -3,7 +3,8 @@
         <div class="group/item cursor-pointer">
             <div class="rounded overflow-hidden relative">
                 <LikeButton />
-                <img v-lazy="item.picture" class="h-[20rem] object-cover w-full group-hover/item:scale-105 transition-all">
+                <img v-lazy="item.picture" class="h-[20rem] object-cover w-full group-hover/item:scale-105 transition-all"
+                    :class="{ 'opacity-50': outOfStock }">
             </div>
             <div class="py-2 h-full">
                 <div class="flex justify-between items-center mb-2">
@@ -14,7 +15,7 @@
                     <div :class="outStockClass" v-if="outOfStock">
                         Товар закончился
                     </div>
-                    <AddToCartButton v-else @click.prevent="addToCart" />
+                    <AddToCartButton v-else :product="item" />
                 </div>
                 <h4 class="title font-semibold group-hover/item:text-primary_2">{{ item.name }}</h4>
             </div>
@@ -37,10 +38,6 @@ const { item } = defineProps<Props>()
 const outOfStock = item.inStock === 'instock' ? false : true
 
 const outStockClass = 'bg-red-200 text-red-800 px-2 py-1 rounded flex items-center text-xs font-semibold'
-const addToCart = (): void => {
-    alert('добавить в корзину')
-}
-
 </script>
 
 <style scoped>
