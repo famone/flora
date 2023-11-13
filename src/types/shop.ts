@@ -20,7 +20,7 @@ export interface Subcategory {
 }
 
 export interface Product {
-    id: number | null
+    id: number
     name: string
     slug: string
     picture: string
@@ -40,7 +40,8 @@ export interface Product {
 }
 
 export interface CartItem extends Product {
-    amount: any
+    amount: number
+    package?: number
 }
 
 export interface CatalogType {

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import { Category, CatalogSelectedType, Product } from '@/types/shop'
 import router from '@/router/index'
+import { useCartStore } from './cart'
 
 interface GoodsState {
     catalogSelected: CatalogSelectedType
@@ -90,6 +91,7 @@ export const useShopStore = defineStore('shop', {
         },
         CHANGE_CATALOG(val: CatalogSelectedType) {
             this.catalogSelected = val
+            useCartStore().CLEAR_ALL_CART()
         }
     },
     persist: {

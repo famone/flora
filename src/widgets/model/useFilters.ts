@@ -12,12 +12,13 @@ export function useFilters() {
 
     const filterProducts = (products: Product[]) => {
         if (store.catalogSelected) {
+            let filtered = [...products]
             if (selectedFilter.value === 1) {
-                return products.sort((a, b) => a.price[store.catalogSelected as keyof typeof a.price] - b.price[store.catalogSelected as keyof typeof b.price]) //по возрастанию
+                return filtered.sort((a, b) => a.price[store.catalogSelected as keyof typeof a.price] - b.price[store.catalogSelected as keyof typeof b.price]) //по возрастанию
             } else if (selectedFilter.value === 2) {
-                return products.sort((a, b) => b.price[store.catalogSelected as keyof typeof a.price] - a.price[store.catalogSelected as keyof typeof b.price]) //по убыванию
+                return filtered.sort((a, b) => b.price[store.catalogSelected as keyof typeof a.price] - a.price[store.catalogSelected as keyof typeof b.price]) //по убыванию
             } else if (selectedFilter.value === 3) {
-                return products.filter((i) => i.inStock === 'instock') //по наличию
+                return filtered.filter((i) => i.inStock === 'instock') //по наличию
             } else {
                 return products
             }

@@ -4,14 +4,14 @@
             <div class="grid grid-cols-12 gap-6">
                 <div class="col-span-4">
                     <router-link to="/">
-                        <img src="https://sflora.ru/img/dlogo.c8e7541b.svg" class="h-12 mb-4">
+                        <img src="@/assets/img/logo.svg" class="h-12 mb-4">
                     </router-link>
                     <p class="text-sm">Питомник заложен в 2002 году на участке <br>
                         площадью около 1 га в деревне Парицы, <br>
                         в 5 км от Гатчины (50 км от Санкт-Петербурга).</p>
 
                     <router-link to="/">
-                        <img src="https://sflora.ru/img/appm_logo.930eb15c.svg" class="h-12 mt-8 mb-4">
+                        <img src="@/assets/img/appm_logo.svg" class="h-12 mt-8 mb-4">
                     </router-link>
                     <p class="text-sm">Член ассоциации производителей <br> посадочного материала</p>
                 </div>
@@ -47,7 +47,7 @@
                 <router-link to="/">
                     <p
                         class="text-sm text-dim_dark font-extrabold tracking-widest mb-8 flex hover:opacity-50 transition-all">
-                        <img src="https://sflora.ru/img/navi.d00ab8b7.svg" class="mr-2">
+                        <img src="@/assets/img/navi.svg" class="mr-2">
                         ПОСМОТРЕТЬ НА КАРТЕ
                     </p>
                 </router-link>

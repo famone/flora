@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <pre>{{ cartStore.cart }}</pre>
+    <div class="py-8 min-h-[440px]">
+        <CartView />
     </div>
 </template>
 
 <script setup lang="ts">
-import { useCartStore } from '@/stores/cart'
-
-const cartStore = useCartStore()
+import CartView from '@/widgets/cart/CartView.vue'
 </script>
 
 <style scoped></style>

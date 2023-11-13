@@ -19,7 +19,7 @@ const props = defineProps({
         required: true
     }
 })
-const product = ref<Product>()
+const product = ref<Product | null>(null)
 
 watch(() => props.id, () => {
     setProduct()
@@ -31,6 +31,7 @@ onMounted(() => {
 
 async function setProduct() {
     // product.value = null // при вызове надо привести к налл, чтобы отобразить skeleton
+    product.value = null
     product.value = await store.LOAD_PRODUCT(props.id)
 }
 

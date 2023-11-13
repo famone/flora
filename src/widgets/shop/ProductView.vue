@@ -2,7 +2,10 @@
     <div class="container mx-auto" v-if="product">
         <div class="grid grid-cols-12 gap-6">
             <PhotoBlock :product="product" />
-            <PriceBlock :product="product" />
+            <div class="col-span-4 pl-8">
+                <PriceBlock :product="product" />
+                <DeliveryBlock />
+            </div>
             <ProductTabsBlock :activeTab="activeTab" :tabs="tabs" @chageTab="chageTab">
                 <template #tabitem>
                     <Description v-if="activeTab == 0" :description="product.description" />
@@ -13,21 +16,24 @@
             </ProductTabsBlock>
         </div>
     </div>
+    <div v-else>
+        ЗАГРУЗКА
+    </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import PriceBlock from '@/entities/product/PriceBlock.vue';
 import PhotoBlock from '@/entities/product/PhotoBlock.vue';
-import { Product } from '@/types/shop'
 import ProductTabsBlock from '@/entities/product/ProductTabsBlock.vue';
-
+import DeliveryBlock from '@/entities/product/DeliveryBlock.vue'
 import Description from '@/features/product/Description.vue'
 import Characters from '@/features/product/Characters.vue'
 import Reviews from '@/features/product/reviews/Reviews.vue'
 
+import { Product } from '@/types/shop'
 interface Props {
-    product?: Product
+    product: Product | null
 }
 const { product } = defineProps<Props>()
 

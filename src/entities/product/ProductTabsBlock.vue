@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-8 py-12">
+    <div class="col-span-8 py-8">
         <div class="flex gap-4">
             <button class="pb-4 text-lg tab-button text-gray-400 font-semibold" v-for="(item, index) in props.tabs"
                 :key="index" :class="{ 'active': activeTab === index }" @click="chageTab(index)">
