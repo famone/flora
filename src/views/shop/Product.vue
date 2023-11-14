@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, ref, onMounted } from 'vue'
+import { watch, ref, onMounted, onUnmounted } from 'vue'
 // import Popular from '@/widgets/home/Popular.vue'
 import ProductView from '@/widgets/shop/ProductView.vue'
 import { useShopStore } from '@/stores/shop'
@@ -28,11 +28,15 @@ watch(() => props.id, () => {
 onMounted(() => {
     setProduct()
 })
+onUnmounted(() => {
+    document.title = 'Северная Флора'
+})
 
 async function setProduct() {
     // product.value = null // при вызове надо привести к налл, чтобы отобразить skeleton
     product.value = null
     product.value = await store.LOAD_PRODUCT(props.id)
+    document.title = product.value?.name || 'Северная Флора'
 }
 
 </script>

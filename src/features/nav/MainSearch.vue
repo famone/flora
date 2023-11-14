@@ -15,16 +15,20 @@
                 <router-link :to="`/product/${item?.slug}`"
                     class="block px-4 py-2.5 text font-semibold hover:bg-gray-100 cursor-pointer"
                     v-for="(item, index) in searchResults" :key="index">
-                    <!-- <MagnifyingGlassIcon class="h-5 text-gray-400 inline-block mr-2" /> -->
                     <magnify class="text-gray-400 inline-block mr-2" />
                     <span v-html="item?.name"></span>
                 </router-link>
-                <p class="px-4 py-1 text-md font-bold" v-if="searchHistory.length">Вы недавно искали:</p>
-                <div class="px-4 py-2.5 text font-semibold hover:bg-gray-100 cursor-pointer relative"
+                <p class="px-4 py-1 text-md font-bold border-t" v-if="searchHistory.length">Вы недавно искали:</p>
+                <div class="px-4 py-2.5 text font-semibold hover:bg-gray-100 cursor-pointer relative border-b"
                     v-for="(item, idx) in searchHistory" :key="idx">
                     <history class="text-gray-400 inline-block mr-2" />{{ item }}
                     <XMarkIcon class="h-6 text-gray-400 inline-block absolute right-2.5 top-2.5"
                         @click="removeFromHistory(idx)" />
+                </div>
+                <p class="px-4 py-1 text-md font-bold" v-if="searchPopular.length">Часто ищут:</p>
+                <div class="px-4 py-2.5 text font-semibold hover:bg-gray-100 cursor-pointer relative"
+                    v-for="(item, idx) in searchPopular" :key="idx">
+                    <magnify class="text-gray-400 inline-block mr-2" />{{ item }}
                 </div>
             </div>
         </transition>
@@ -42,6 +46,12 @@ const emit = defineEmits(['onFocus', 'onFocusout'])
 const { searchInput, startSearch, searchResults, searchHistory, redirectOnSearch, removeFromHistory } = useSearch()
 
 const showDropDown = ref<boolean>(false)
+
+const searchPopular = [
+    'Флокс',
+    'Айва японская',
+    'Барбарис'
+]
 
 function onFocus() {
     showDropDown.value = true

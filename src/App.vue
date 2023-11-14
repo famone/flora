@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <!-- Use any custom transition and  to `fade` -->
+      <transition name="slide-top" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <!-- <router-view></router-view> -->
     <Footer />
   </div>
 </template>

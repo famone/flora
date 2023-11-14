@@ -84,6 +84,24 @@ body {
     transform: translateY(10px);
 }
 
+/* slide router */
+.slide-top-enter-from,
+.slide-top-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.slide-top-enter-active,
+.slide-top-leave-active {
+    transition: all 0.3s cubic-bezier(0.33, 0, 0.27, 1) !important;
+}
+
+.slide-top-enter-to,
+.slide-top-leave {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* custom scrollbar */
 ::-webkit-scrollbar {

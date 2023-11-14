@@ -1,9 +1,12 @@
 <template>
     <div class="rounded-xl bg-gray-100 mb-4">
         <div class="p-4">
-            <button class="bg-primary rounded-xl px-4 py-4 text-white whitespace-nowrap font-bold w-full">
-                Перейти к оформлению
-            </button>
+            <router-link to="/checkout">
+                <button class="bg-primary rounded-xl px-4 py-4 text-white whitespace-nowrap font-bold w-full group">
+                    Перейти к оформлению
+                    <ArrowRightIcon class="transition-all inline-block h-4 ml-1 group-hover:translate-x-1" />
+                </button>
+            </router-link>
         </div>
         <div class="p-4 border-b border-gray-300">
             <div class="flex justify-between items-center mb-2">
@@ -45,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ExclamationCircleIcon } from '@heroicons/vue/24/outline'
+import { ExclamationCircleIcon, ArrowRightIcon } from '@heroicons/vue/24/outline'
 import { useCartTotals } from '@/helpers/useCart'
 
 const { productsAmountTotal, productsPriceTotal, packagePriceTotal, totalPrice, leftToOrder } = useCartTotals()

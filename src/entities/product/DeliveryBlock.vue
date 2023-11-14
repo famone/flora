@@ -1,9 +1,11 @@
 <template>
     <div class="mt-4">
         <div class="divide-y">
-            <div v-for="item in punkts" class="py-1">
+            <div v-for="(item, index) in punkts" class="py-1" :key="index">
                 <p class="font-bold flex items-center mb-1">
-                    <MapPinIcon class="h-6 mr-1" />{{ item.name }}
+                    <MapPinIcon class="h-6 mr-1" v-if="index == 0" />
+                    <subway class="h-4 w-4 ml-1 mr-2" v-else />
+                    {{ item.name }}
                 </p>
                 <p class="text-sm text-gray-400 pl-7">{{ item.location }}</p>
             </div>
@@ -18,6 +20,7 @@
 
 <script setup lang="ts">
 import { MapPinIcon, ArrowLongRightIcon } from '@heroicons/vue/24/outline'
+import subway from '@/shared/icons/subway.vue'
 
 const punkts = [
     {
