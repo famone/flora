@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 // import MainCategories from '@/views/shop/MainCategories.vue'
 // import Category from '@/views/shop/Category.vue'
 // import Subcategory from '@/views/shop/Subcategory.vue'
+import { useCartTotals } from '@/helpers/useCart';
 
 const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
   if (to.hash) {
@@ -57,6 +58,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/checkout',
     name: 'checkout',
     component: () => import('@/views/cart/Checkout.vue'),
+    beforeEnter: (to, from, next) => {
+      const { leftToOrder } = useCartTotals()
+      if (leftToOrder.value === 0) {
+        return next()
+      } else {
+        return next('/cart')
+      }
+    },
   }
   // {
   //   path: '/about',
