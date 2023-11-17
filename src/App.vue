@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component }">
       <transition name="slide-top" mode="out-in">
         <component :is="Component" />
       </transition>
