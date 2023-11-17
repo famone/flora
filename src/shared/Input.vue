@@ -5,7 +5,7 @@
         </label>
         <input type="text"
             class="w-full bg-gray-100 rounded-lg px-3 pt-7 pb-3 text-semibold border-none font-semibold focus:ring-primary_2"
-            v-model="value" @focusin="focused = true" @focusout="focusOut" @change="focusOut">
+            v-model="value" @focus="focused = true" @focusout="focusOut" @change="focusOut" maxlength="4">
     </div>
 </template>
 

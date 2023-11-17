@@ -2,7 +2,9 @@
     <div class="rounded-xl bg-gray-100 mb-4">
         <div class="p-4">
             <router-link to="/checkout">
-                <button class="bg-primary rounded-xl px-4 py-4 text-white whitespace-nowrap font-bold w-full group">
+                <button
+                    class=" bg-primary rounded-xl px-4 py-4 text-white whitespace-nowrap font-bold w-full group transition-all"
+                    :class="{ 'opacity-50': leftToOrder !== 0 }">
                     Перейти к оформлению
                     <ArrowRightIcon class="transition-all inline-block h-4 ml-1 group-hover:translate-x-1" />
                 </button>
