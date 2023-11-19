@@ -131,3 +131,12 @@ body {
     background-color: transparent !important;
     color: var(--primary_2);
 }
+
+/* icon */
+.after-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    right: 12px;
+}

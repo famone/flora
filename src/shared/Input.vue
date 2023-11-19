@@ -3,9 +3,12 @@
         <label class="absolute left-3 transition-all text-gray-400 z-10 pointer-events-none text-md top-5">
             {{ props.placeholder }}
         </label>
-        <input type="text"
+        <input :type="type"
             class="w-full bg-gray-100 rounded-lg px-3 pt-7 pb-3 text-semibold border-none font-semibold focus:ring-primary_2"
-            v-model="value" @focus="focused = true" @focusout="focusOut" @change="focusOut" maxlength="4">
+            :class="{ error: error }" v-model="value" @focus="focused = true" @focusout="focusOut" @change="focusOut"
+            :maxlength="type === 'password' ? 24 : ''" @blur="onBlur">
+
+        <slot name="after"></slot>
     </div>
 </template>
 
@@ -15,19 +18,27 @@ import { onMounted, ref, computed } from 'vue'
 const props = defineProps({
     placeholder: {
         type: String,
-        defaul: ''
+        default: ''
+    },
+    type: {
+        type: String,
+        default: 'text'
     },
     modelValue: {
         type: String,
-        defaul: ''
+        default: ''
     },
     light: {
         type: Boolean,
-        defaul: false
+        default: false
     },
+    error: {
+        type: Boolean,
+        default: false
+    }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'onBlur'])
 
 const value = computed({
     get() {
@@ -51,9 +62,17 @@ onMounted(() => {
     focusOut()
 })
 
+function onBlur() {
+    emit('onBlur')
+}
+
 </script>
 
 <style scoped>
+.error {
+    box-shadow: 0 0 0 1px red;
+}
+
 /* text-sm top-2 */
 .focused label {
     font-size: 12px;
