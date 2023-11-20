@@ -17,6 +17,7 @@
                 <EyeSlashIcon class="after-icon h-6 text-gray-400" @click="changePassVisibility" v-else />
             </template>
             </Input>
+            <!-- <OtpInput /> -->
             <button class=" bg-primary rounded-xl px-4 py-4 text-white whitespace-nowrap font-bold w-full mb-4"
                 @click="submitForm">
                 Войти
@@ -31,6 +32,7 @@
 
 <script setup lang="ts">
 import Input from '@/shared/Input.vue'
+// import OtpInput from '@/shared/OtpInput.vue'
 import { XMarkIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
 import { reactive, ref, computed } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
