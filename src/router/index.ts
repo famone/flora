@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw, RouterScrollBehavior } from 'vue-router'
-import Home from '@/views/Home.vue'
+import { createRouter, createWebHistory, RouteRecordRaw, RouterScrollBehavior } from 'vue-router';
+import Home from '@/views/Home.vue';
 // import MainCategories from '@/views/shop/MainCategories.vue'
 // import Category from '@/views/shop/Category.vue'
 // import Subcategory from '@/views/shop/Subcategory.vue'
@@ -13,7 +13,7 @@ const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
     return savedPosition;
   }
   return { left: 0, top: 0 };
-}
+};
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -58,12 +58,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/checkout',
     name: 'checkout',
     component: () => import('@/views/cart/Checkout.vue'),
-    beforeEnter: (to, from, next) => {
-      const { leftToOrder } = useCartTotals()
+    beforeEnter: (_to, _from, next) => {
+      const { leftToOrder } = useCartTotals();
       if (leftToOrder.value === 0) {
-        return next()
+        return next();
       } else {
-        return next('/cart')
+        return next('/cart');
       }
     },
   }
@@ -75,12 +75,12 @@ const routes: Array<RouteRecordRaw> = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior
-})
+});
 
-export default router
+export default router;

@@ -1,34 +1,42 @@
 <template>
-    <div class="col-span-8 py-8">
-        <div class="flex gap-4">
-            <button class="pb-4 text-lg tab-button text-gray-400 font-semibold" v-for="(item, index) in props.tabs"
-                :key="index" :class="{ 'active': activeTab === index }" @click="chageTab(index)">
-                {{ item.name }}
-                <sup class="text-gray-400" v-if="index === 2">2</sup>
-            </button>
-        </div>
-        <div class="py-6">
-            <slot name="tabitem" />
-        </div>
+  <div class="col-span-8 py-8">
+    <div class="flex gap-4">
+      <button
+        v-for="(item, index) in props.tabs"
+        :key="index"
+        class="pb-4 text-lg tab-button text-gray-400 font-semibold"
+        :class="{ 'active': activeTab === index }"
+        @click="chageTab(index)"
+      >
+        {{ item.name }}
+        <sup
+          v-if="index === 2"
+          class="text-gray-400"
+        >2</sup>
+      </button>
     </div>
+    <div class="py-6">
+      <slot name="tabitem" />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue'
-const emit = defineEmits(['chageTab'])
+import { PropType } from 'vue';
+const emit = defineEmits(['chageTab']);
 const props = defineProps({
-    tabs: {
-        type: Array as PropType<any>,
-        default: []
-    },
-    activeTab: {
-        type: Number,
-        default: 0
-    }
-})
+  tabs: {
+    type: Array as PropType<any>,
+    default: () => []
+  },
+  activeTab: {
+    type: Number,
+    default: 0
+  }
+});
 
 function chageTab(index: number) {
-    emit('chageTab', index)
+  emit('chageTab', index);
 }
 
 </script>

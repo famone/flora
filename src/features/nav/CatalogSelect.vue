@@ -1,28 +1,31 @@
 <template>
-    <p class="flex items-center transition-all hover:opacity-70 cursor-pointer" v-if="catalogSelected">
-        <MapPinIcon class="h-6 mr-1" /> {{ catalogName(catalogSelected) }}
-    </p>
-    <p v-else>
-        Не выбран
-    </p>
+  <p
+    v-if="catalogSelected"
+    class="flex items-center transition-all hover:opacity-70 cursor-pointer"
+  >
+    <MapPinIcon class="h-6 mr-1" /> {{ catalogName(catalogSelected) }}
+  </p>
+  <p v-else>
+    Не выбран
+  </p>
 </template>
 
 <script setup lang="ts">
-import { useCatalog } from '@/features/nav/model/useCatalog'
-import { MapPinIcon } from '@heroicons/vue/24/outline'
-import { CatalogSelectedType } from '@/types/shop'
+import { useCatalog } from '@/features/nav/model/useCatalog';
+import { MapPinIcon } from '@heroicons/vue/24/outline';
+import { CatalogSelectedType } from '@/types/shop';
 
-const { catalogTypes } = useCatalog()
+const { catalogTypes } = useCatalog();
 
 interface Props {
-    catalogSelected: CatalogSelectedType
+  catalogSelected: CatalogSelectedType
 }
-const { catalogSelected } = defineProps<Props>()
+const { catalogSelected } = defineProps<Props>();
 
 
 const catalogName = (catalogSelected: CatalogSelectedType) => {
-    return catalogTypes.value.find((item) => item.value === catalogSelected)?.name
-}
+  return catalogTypes.value.find((item) => item.value === catalogSelected)?.name;
+};
 </script>
 
 <!-- 
