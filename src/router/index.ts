@@ -5,7 +5,7 @@ import Home from '@/views/Home.vue';
 // import Subcategory from '@/views/shop/Subcategory.vue'
 import { useCartTotals } from '@/helpers/useCart';
 
-const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
+const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
   if (to.hash) {
     return { el: to.hash };
   }
@@ -78,7 +78,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/flora/'),
   routes,
   scrollBehavior
 });

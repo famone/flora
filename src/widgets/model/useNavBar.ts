@@ -16,7 +16,7 @@ export function useNavBar() {
     },
     {
       txt: 'Где купить'
-    }
+    },
   ]);
 
   const main_nav = ref([
