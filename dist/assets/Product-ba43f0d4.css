@@ -1,0 +1,1 @@
+.tab-button[data-v-4e7dc029]{position:relative;transition:all .2s ease}.tab-button.tab-button.active[data-v-4e7dc029]{color:#000}.tab-button[data-v-4e7dc029]:before{content:"";height:4px;width:0%;background-color:var(--primary_2);position:absolute;left:0;bottom:0;transition:all .2s ease-in-out;opacity:0}.tab-button.active[data-v-4e7dc029]:before{width:100%;opacity:1}
