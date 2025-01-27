@@ -1,5 +1,5 @@
 <template>
-  <header class="header shadow-md mx-auto sticky top-0 z-20">
+  <header class="header shadow-md mx-auto sticky top-0 z-40">
     <div
       v-if="overlay"
       class="h-screen w-screen fixed top-0 left-0 bg-black opacity-60 -z-10"
